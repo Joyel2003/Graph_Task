@@ -1,31 +1,40 @@
+
 let isGridDrawn = false;
 
 function handleAction() {
   if (!isGridDrawn) {
     drawGrid();
+    document.getElementById('actionButton').textContent = 'Mark';
+    document.getElementById('valueInputs').style.display = 'inline-block';
+    document.getElementById('extraButtons').style.display = 'inline-block';
+    isGridDrawn = true;
   } else {
     markCell();
   }
 }
 
+// let isGridDrawn = false;
+
+// function handleAction() {
+//   if (!isGridDrawn) {
+//     drawGrid();
+//   } else {
+//     markCell();
+//   }
+// }
+
 function drawGrid() {
   const maxX = parseInt(document.getElementById('maxX').value);
   const maxY = parseInt(document.getElementById('maxY').value);
   const grid = document.getElementById('gridContainer');
-  const valueInputs = document.getElementById('valueInputs');
-  const button = document.getElementById('actionButton');
 
   if (isNaN(maxX) || isNaN(maxY) || maxX < 1 || maxY < 1) {
     alert('Please enter valid Max X and Max Y values.');
     return;
   }
 
-  valueInputs.style.display = 'inline-block';
-  button.textContent = 'Mark';
-  isGridDrawn = true;
-
   grid.innerHTML = '';
-  grid.style.gridTemplateColumns = `repeat(${maxX}, 50px)`;
+  grid.style.gridTemplateColumns = `repeat(${maxX}, 20px)`;
 
   for (let y = maxY; y >= 1; y--) {
     for (let x = 1; x <= maxX; x++) {
@@ -39,24 +48,68 @@ function drawGrid() {
 }
 
 
+// function drawGrid() {
+//   const maxX = parseInt(document.getElementById('maxX').value);
+//   const maxY = parseInt(document.getElementById('maxY').value);
+//   const grid = document.getElementById('gridContainer');
+//   const valueInputs = document.getElementById('valueInputs');
+//   const button = document.getElementById('actionButton');
+
+//   if (isNaN(maxX) || isNaN(maxY) || maxX < 1 || maxY < 1) {
+//     alert('Please enter valid Max X and Max Y values.');
+//     return;
+//   }
+
+//   valueInputs.style.display = 'inline-block';
+//   button.textContent = 'Mark';
+//   isGridDrawn = true;
+
+//   grid.innerHTML = '';
+//   grid.style.gridTemplateColumns = `repeat(${maxX}, 50px)`;
+
+//   for (let y = maxY; y >= 1; y--) {
+//     for (let x = 1; x <= maxX; x++) {
+//       const cell = document.createElement('div');
+//       cell.className = 'cell';
+//       cell.dataset.x = x;
+//       cell.dataset.y = y;
+//       grid.appendChild(cell);
+//     }
+//   }
+// }
+
+
 function markCell() {
-    const valueX = parseInt(document.getElementById('ValueX').value);
-    const valueY = parseInt(document.getElementById('ValueY').value);
-  
-    const cells = document.querySelectorAll('.cell');
-  
-    cells.forEach(cell => {
-      const x = parseInt(cell.getAttribute('data-x'));
-      const y = parseInt(cell.getAttribute('data-y'));
-  
-      if (x === valueX && y === valueY) {
-        cell.style.backgroundColor = 'red';
-      }
-    });
-    if(!cellFound){
-        alert('Cell not found')
+  const valueX = parseInt(document.getElementById('ValueX').value);
+  const valueY = parseInt(document.getElementById('ValueY').value);
+
+  const cells = document.querySelectorAll('.cell');
+  for (const cell of cells) {
+    if (parseInt(cell.dataset.x) === valueX && parseInt(cell.dataset.y) === valueY) {
+      cell.style.backgroundColor = 'red';
     }
   }
+}
+
+
+// function markCell() {
+//     const valueX = parseInt(document.getElementById('ValueX').value);
+//     const valueY = parseInt(document.getElementById('ValueY').value);
+  
+//     const cells = document.querySelectorAll('.cell');
+  
+//     cells.forEach(cell => {
+//       const x = parseInt(cell.getAttribute('data-x'));
+//       const y = parseInt(cell.getAttribute('data-y'));
+  
+//       if (x === valueX && y === valueY) {
+//         cell.style.backgroundColor = 'red';
+//       }
+//     });
+//     if(!cellFound){
+//         alert('Cell not found')
+//     }
+//   }
   
 // function markCell() {
 //     // Get the X and Y input elements
@@ -114,22 +167,48 @@ function clearMark(){
 //  document.getElementById('gridContainer').innerHTML ='';
 // }
 
-function resetAll(){
+
+function resetAll() {
+  // Reset state
   isGridDrawn = false;
 
+  // Clear all input fields
   document.getElementById('maxX').value = '';
   document.getElementById('maxY').value = '';
-  document.getElementById('ValueX').value = '',
+  document.getElementById('ValueX').value = '';
   document.getElementById('ValueY').value = '';
 
+  // Hide the value input and extra button sections
   document.getElementById('valueInputs').style.display = 'none';
-  document.getElementById('extraButton').style.display = 'none';
+  document.getElementById('extraButtons').style.display = 'none';
 
-  document.getElementById('actionButton').textContent = 'Draw';
+  // Reset main button to "Draw"
+  const drawBtn = document.getElementById('actionButton');
+  drawBtn.textContent = 'Draw';
 
+  // Remove the grid
   const grid = document.getElementById('gridContainer');
   grid.innerHTML = '';
   grid.style.gridTemplateColumns = '';
-  
 }
 
+
+
+// function resetAll(){
+//   isGridDrawn = false;
+
+//   document.getElementById('maxX').value = '';
+//   document.getElementById('maxY').value = '';
+//   document.getElementById('ValueX').value = '',
+//   document.getElementById('ValueY').value = '';
+
+//   document.getElementById('valueInputs').style.display = 'none';
+//   document.getElementById('extraButton').style.display = 'none';
+
+//   document.getElementById('actionButton').textContent = 'Draw';
+
+//   const grid = document.getElementById('gridContainer');
+//   grid.innerHTML = '';
+//   grid.style.gridTemplateColumns = '';
+  
+// }
