@@ -9,7 +9,7 @@ body {
 
   }
   .drbutton{
-    margin-top: 15px;
+    /* margin-top: 15px; */
   }
   
   .controls {
@@ -23,7 +23,7 @@ body {
   
   .controls label {
     margin-right: 10px;
-    height: 5vh;
+    height: 4vh;
   }
   
   .grid {
@@ -42,3 +42,6 @@ body {
     border: 1px solid;
   }
   
+  #valueInputs{
+    margin: 15px 0px;
+  }
