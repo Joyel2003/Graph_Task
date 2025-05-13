@@ -59,17 +59,7 @@ function markCell() {
   }
 }
 
-// function markCell() {
-//   const valueX = parseInt(document.getElementById('ValueX').value);
-//   const valueY = parseInt(document.getElementById('ValueY').value);
 
-//   const cells = document.querySelectorAll('.cell');
-//   for (const cell of cells) {
-//     if (parseInt(cell.dataset.x) === valueX && parseInt(cell.dataset.y) === valueY) {
-//       cell.style.backgroundColor = 'red';
-//     }
-//   }
-// }
 function clearMark(){
   const gridCells = document.querySelectorAll('.cell');
   gridCells.forEach(cell => {
@@ -101,5 +91,4 @@ function resetAll() {
   grid.innerHTML = '';
   grid.style.gridTemplateColumns = '';
 }
-
-
+      
