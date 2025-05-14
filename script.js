@@ -68,27 +68,22 @@ function clearMark(){
   document.getElementById('ValueX').value = '';
   document.getElementById('ValueY').value = '';
 }
+
 function resetAll() {
-  // Reset state
   isGridDrawn = false;
 
-  // Clear all input fields
   document.getElementById('maxX').value = '';
   document.getElementById('maxY').value = '';
   document.getElementById('ValueX').value = '';
   document.getElementById('ValueY').value = '';
 
-  // Hide the value input and extra button sections
   document.getElementById('valueInputs').style.display = 'none';
   document.getElementById('extraButtons').style.display = 'none';
 
-  // Reset main button to "Draw"
   const drawBtn = document.getElementById('actionButton');
   drawBtn.textContent = 'Draw';
 
-  // Remove the grid
   const grid = document.getElementById('gridContainer');
   grid.innerHTML = '';
   grid.style.gridTemplateColumns = '';
 }
-      
