@@ -105,8 +105,3 @@ function resetAll(graphId) {
   graph.remove(); // Removes the entire graph block from the DOM
 }
 graphBlock.style.border = objStyle.border
-
-
-
-
-
